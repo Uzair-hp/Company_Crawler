@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
       .replace(/[^a-z0-9]/gi, "_")
       .toLowerCase();
 
-    return new Response(pdfBuffer, {
+    return new Response(new Uint8Array(pdfBuffer), {
       status: 200,
       headers: {
         "Content-Type": "application/pdf",

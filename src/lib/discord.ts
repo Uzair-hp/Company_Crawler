@@ -76,7 +76,7 @@ export async function sendToDiscord(
   formData.append("payload_json", JSON.stringify(payloadJson));
   
   // Convert PDF buffer to a Blob and append as a file
-  const pdfBlob = new Blob([pdfBuffer], { type: "application/pdf" });
+  const pdfBlob = new Blob([new Uint8Array(pdfBuffer)], { type: "application/pdf" });
   formData.append("file", pdfBlob, `${researchData.companyName.replace(/[^a-z0-9]/gi, "_").toLowerCase()}_report.pdf`);
 
   let targetUrl = "";
